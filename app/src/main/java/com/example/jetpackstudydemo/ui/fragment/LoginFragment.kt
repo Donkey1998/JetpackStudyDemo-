@@ -30,6 +30,9 @@ class LoginFragment : Fragment() {
         password= view.findViewById(R.id.et_pwd);
         login= view.findViewById(R.id.btn_login);
 
+        val string = arguments?.getString("name")
+        user.setText(string)
+
         login.setOnClickListener {
             val userName : String = user.text.toString();
             val userPwd : String = password.text.toString();

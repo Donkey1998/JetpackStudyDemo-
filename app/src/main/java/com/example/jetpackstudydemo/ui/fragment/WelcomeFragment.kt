@@ -38,9 +38,18 @@ class WelcomeFragment : Fragment() {
                     popExit = R.anim.common_slide_out_right
                 }
             }
+            // 参数设置
+            val bundle = Bundle()
+            bundle.putString("name","TeaOf")
+            findNavController().navigate(R.id.login, bundle,navOption)
         }
 
         btnRegister.setOnClickListener {
+            val action = WelcomeFragmentDirections
+                .actionWelcomeToRegister()
+                .setEmail("TeaOf1995@Gamil.com")
+                .setUserName("UserName")
+            findNavController().navigate(action)
         }
     }
 

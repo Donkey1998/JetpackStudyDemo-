@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.jetpackstudydemo.R
+import androidx.navigation.fragment.navArgs
 
 class RegisterFragment : Fragment() {
     override fun onCreateView(
@@ -29,6 +30,11 @@ class RegisterFragment : Fragment() {
         user = view.findViewById(R.id.et_account)
         password= view.findViewById(R.id.et_pwd)
         register= view.findViewById(R.id.btn_login)
+        val safeArgs:RegisterFragmentArgs by navArgs()
+        val emailNumber = safeArgs.email
+        val userName = safeArgs.userName
+        email.setText(emailNumber)
+        user.setText(userName)
         register.setOnClickListener {
             val emailAddress :String = email.text.toString()
             val userName : String = user.text.toString();
