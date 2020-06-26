@@ -1,5 +1,6 @@
 package com.example.jetpackstudydemo.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -9,8 +10,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.jetpackstudydemo.R
+import com.example.jetpackstudydemo.ui.activity.TabActivity
 
 class LoginFragment : Fragment() {
     override fun onCreateView(
@@ -37,6 +40,11 @@ class LoginFragment : Fragment() {
             val userName : String = user.text.toString();
             val userPwd : String = password.text.toString();
             Log.d("LoginFragment", "点击了登录按钮 $userName $userPwd");
+
+            val intent = Intent(context, TabActivity::class.java)
+            context!!.startActivity(intent)
+            Toast.makeText(context, "登录成功！", Toast.LENGTH_SHORT).show()
+
         }
 
     }
