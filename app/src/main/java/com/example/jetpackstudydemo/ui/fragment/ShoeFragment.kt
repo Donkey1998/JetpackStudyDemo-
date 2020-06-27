@@ -37,6 +37,12 @@ class ShoeFragment : Fragment() {
             Toast.makeText(context, "获取当前Fragment生命周期"+lifecycle.currentState.toString(), Toast.LENGTH_SHORT).show()
         }
         shoeViewModel.counter.observe(this, Observer { count -> infoText.text = count.toString() })
+
+        getUserBtn.setOnClickListener {
+            val userId = (0.. 1000).random().toString()
+            shoeViewModel.getUser(userId)
+        }
+        shoeViewModel.user.observe(this, Observer { user -> infoText.text = user.firstName })
     }
 
 }
