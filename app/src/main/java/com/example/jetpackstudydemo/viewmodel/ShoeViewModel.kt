@@ -2,6 +2,6 @@ package com.example.jetpackstudydemo.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-class ShoeViewModel :ViewModel() {
-    var counter = 0;
+class ShoeViewModel(countReserved :Int):ViewModel() {
+    var counter = countReserved
 }

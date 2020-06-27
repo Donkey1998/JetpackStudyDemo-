@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.jetpackstudydemo.R
 import com.example.jetpackstudydemo.viewmodel.ShoeViewModel
+import com.example.jetpackstudydemo.viewmodel.ShoeViewModelFactroy
 import kotlinx.android.synthetic.main.shoe_fragment.*
 
 class ShoeFragment : Fragment() {
@@ -22,9 +23,15 @@ class ShoeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        shoeViewModel = ViewModelProviders.of(this).get(ShoeViewModel::class.java)
+        val countReserved : Int = 0
+        shoeViewModel = ViewModelProviders.of(this,ShoeViewModelFactroy(countReserved)).get(ShoeViewModel::class.java)
+//        shoeViewModel = ViewModelProviders.of(this).get(ShoeViewModel::class.java)
         plusOneBtn.setOnClickListener {
             shoeViewModel.counter++
+            refreshCounter()
+        }
+        clearBtn.setOnClickListener {
+            shoeViewModel.counter = 0
             refreshCounter()
         }
         refreshCounter()
